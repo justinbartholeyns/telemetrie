@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Telemetrie</title>
+  <style>
+    @font-face {
+      font-family: 'Formula1';
+      src: url('Formula1-Regular.otf') format('truetype');
+      /* Assurez-vous de remplacer 'Formula1-Regular.ttf' par le chemin correct vers le fichier de la police */
+    }
+    body {
+      margin: 0;
+      font-family: 'Formula1', Arial, sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      color: white;
+      background-color: red;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 50px;
+    }
+    header h1 {
+      font-family: 'Formula1', Arial, sans-serif;
+      margin-left: 60px;
+    }
+    .logo-title-container {
+      display: flex;
+      align-items: center;
+    }
+    .logo-title-container a {
+      color: white;
+      text-decoration: none;
+    }
+    .content {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .content-top {
+      height: 40vh;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scrollbar-color: transparent transparent;
+    }
+    .content-top::-webkit-scrollbar {
+      display: none;
+    }
+    .photo {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .content-bottom {
+      display: flex;
+      height: 60vh;
+    }
+    .one-third {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: rgb(1, 0, 23); /* Couleur bleue */
+      align-items: center;
+      color: white; /* Couleur du texte */
+    }
+    .two-thirds {
+      flex: 2;
+      display: flex;
+      flex-direction: row; /* Division en largeur */
+    }
+    .two-thirds .one-third {
+      flex: 1;
+      background-color: lightgreen; /* Couleur verte pour le tiers gauche */
+    }
+    .two-thirds .two-thirds {
+      flex: 2;
+      background-color: lightyellow; /* Couleur jaune pour les deux tiers droits */
+    }
+    .choices {
+      list-style-type: none;
+      padding: 0;
+    }
+    .choices li {
+      cursor: pointer;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      background-color: red; /* Couleur de fond rouge */
+    }
+    .choices li:hover {
+      background-color: lightgray;
+    }
+    .choices li.selected {
+      background-color: gray;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-title-container">
+      <img src="JUNIA_logo.png" alt="logo_junia"> 
+      <h1><a href="projet.html">Projet</a></h1>
+      <h1><a href="telemetrie.html">Télémetrie</a></h1>
+      <h1><a href="nous.html">Nous</a></h1>
+    </div>
+  </header>
+  <div class="content">
+    <div class="content-top">
+      <img class="photo" src="hypercar.png" alt="Photo 1">
+      <img class="photo" src="lmp2.png" alt="Photo 2">
+      <img class="photo" src="lmgt3.png" alt="Photo 3">
+      <img class="photo" src="photo4.jpg" alt="Photo 4">
+    </div>
+    <div class="content-bottom">
+      <div class="one-third">
+        <h1 style="color: white;">type de voiture</h1>
+        <ul class="choices">
+          <li onclick="selectChoice(this)">HYPERCAR</li>
+          <li onclick="selectChoice(this)">LM P2</li>
+          <li onclick="selectChoice(this)">LM GT3</li>
+          <li onclick="selectChoice(this)">ARDUINO PROJET</li>
+        </ul>
+      </div>
+      <div class="two-thirds">
+        <div class="one-third" style="background-color: lightblue;"> <!-- Couleur bleue pour le tiers gauche -->
+          <!-- Contenu du tiers gauche -->
+        </div>
+        <div class="two-thirds" style="background-color: lightpink;"> <!-- Couleur rose pour les deux tiers droits -->
+          <!-- Contenu des deux tiers droits -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function selectChoice(element) {
+      const choices = document.querySelectorAll('.choices li');
+      choices.forEach(choice => choice.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    const contentTop = document.querySelector('.content-top');
+
+    contentTop.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      contentTop.scrollLeft += e.deltaY;
+    });
+  </script>
+</body>
+</html>
